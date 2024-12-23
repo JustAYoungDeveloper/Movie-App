@@ -45,3 +45,25 @@ nav{
     background-color: silver;
     color: white;
 }
+
+main{
+    max-width:  1200px;
+    margin: 0 auto;
+    margin-block: 38px;
+}
+
+main section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+footer{
+    text-align: center;
+    background-color: slategray;
+    color: aliceblue;
+    margin-top: 40px;
+    padding-block: 20px;
+    font-size: 20px;
+}

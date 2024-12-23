@@ -10,6 +10,15 @@ body{
 }
 
 nav{
-    background-color: azure;
-    color: black;
+    background-color: darkgray;
+    color: azure;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200;
+    margin: 0% auto;
+    padding: 18;
 }

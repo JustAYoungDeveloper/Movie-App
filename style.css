@@ -10,7 +10,7 @@ body{
 }
 
 nav{
-    background-color: darkgray;
+    background-color: slategray;
     color: azure;
 }
 
@@ -18,7 +18,30 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200;
+    max-width: 1200px;
     margin: 0% auto;
-    padding: 18;
+    padding: 18px;
+}
+
+.search-container input, button{
+  border: none;
+  padding: 5px 10px; 
+  font-size: 16px; 
+}
+
+.search-container input{
+    border-radius: 10px 10px 10px 10px;
+}
+
+.search-container button{
+    border-radius: 10px 10px 10px 10px;
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-container button:hover{
+    background-color: silver;
+    color: white;
 }

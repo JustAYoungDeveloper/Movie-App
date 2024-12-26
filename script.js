@@ -22,17 +22,34 @@ const getMovieInfo = async (movie) => {
 
         if (data.Response === "False") {
             console.error('Movie not found:', data.Error);
+            document.getElementById('movie-details').innerHTML = `<p>${data.Error}</p>`;
             return;
         }
 
-        // Process the movie information
-        console.log(data); // Display movie info in the console or on the UI
+        const movieDetails = `
+            <h3>${data.Title} (${data.Year})</h3>
+            <img src="${data.Poster}" alt="${data.Title}" />
+            <p><strong>Director:</strong> ${data.Director}</p>
+            <p><strong>Genre:</strong> ${data.Genre}</p>
+            <p><strong>Plot:</strong> ${data.Plot}</p>
+        `;
+        document.getElementById('movie-details').innerHTML = movieDetails;
     } catch (error) {
         console.error('Error fetching movie information:', error);
+        document.getElementById('movie-details').innerHTML = `<p>Error fetching data. Please try again later.</p>`;
     }
 };
 
-getMovieInfo('');
+document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const movie = document.querySelector('.inputBox').value.trim();
+    if (movie) {
+        getMovieInfo(movie);
+    } else {
+        document.getElementById('movie-details').innerHTML = `<p>Please enter a movie name.</p>`;
+    }
+});
+
 
 
 // Function to show movie info

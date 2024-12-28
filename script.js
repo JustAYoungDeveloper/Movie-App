@@ -27,12 +27,14 @@ const getMovieInfo = async (movie) => {
         }
 
         const movieDetails = `
-            <h3>${data.Title} (${data.Year})</h3>
             <img src="${data.Poster}" alt="${data.Title}" />
+            <h3>${data.Title} (${data.Year})</h3>
             <p><strong>Director:</strong> ${data.Director}</p>
             <p><strong>Genre:</strong> ${data.Genre}</p>
             <p><strong>Plot:</strong> ${data.Plot}</p>
-        `;
+            <p><strong>Country:</strong> ${data.Country}</p>
+            <p><strong>Rating:</strong> ${data.imdbRating}</p>
+            `;
         document.getElementById('movie-details').innerHTML = movieDetails;
     } catch (error) {
         console.error('Error fetching movie information:', error);
@@ -69,7 +71,7 @@ const showMovieData = (data) => {
     const movieDiv = document.createElement('div');
     movieDiv.classList.add('movie-info');
     movieDiv.innerHTML = `<h2>${Title}</h2>
-                          <p><strong>Rating: &#11088;</strong> ${imdbRating}</p>`;
+                          `;
 
     // Create genre container
     const GenreDiv = document.createElement('div');
@@ -91,7 +93,13 @@ const showMovieData = (data) => {
                            <p><strong>Actors: </strong>${Actors}</p>
                            <p><strong>Plot: </strong>${Plot}</p>`;
 
+    // Create A Div For A Movie Poster
+    const moviePosterElement = document.createElement('div');
+    moviePosterElement.classList.add('movie-poster');
+    moviePosterElement.innerHTML = `<img src="${Poster}" />`;
+
     // Append movieDiv to the container
+    moviecontainer.appendChild(moviePosterElement);
     moviecontainer.appendChild(movieDiv);
 };
 

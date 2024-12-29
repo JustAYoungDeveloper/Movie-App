@@ -15,6 +15,7 @@ const getMovieInfo = async (movie) => {
 const showMovieData = (data) => {
 
     moviecontainer.innerHTML = '';
+    moviecontainer.classList.remove('noBackground');
     // Destructure the data object to get the required data
     const { Title, Year, imdbRating, Genre, Runtime, Director, Actors, Plot, Poster, Released } = data;
     const movieElement = document.createElement('div');
@@ -35,12 +36,12 @@ const showMovieData = (data) => {
                           <p><strong>Release Date:</strong> ${Released}</p>
                           <p><strong>Duration: ${Runtime}</strong></p>
                           <p><strong>Plot:</strong> ${Plot}</p>
-                            <p><strong>Actors:</strong> ${Actors}</p>
+                          <p><strong>Actors:</strong> ${Actors}</p>
                           `;
-
+// Create a div element to display the movie poster
     const moviePosterElemnt = document.createElement('div');
     moviePosterElemnt.classList.add('movie-poster');
-    moviePosterElemnt.innerHTML = `<img src="${Poster}"`;
+    moviePosterElemnt.innerHTML = `<img src="${Poster}">`;
     moviecontainer.appendChild(moviePosterElemnt);
     moviecontainer.appendChild(movieElement);
 }
@@ -52,5 +53,9 @@ searchForm.addEventListener('submit', async (e) => {
     const movieName = inputBox.value.trim();
     if (movieName !== '') {
         getMovieInfo(movieName);
+    }
+    else {
+        moviecontainer.innerHTML = `<h2>Please enter a movie name</h2>`;
+        moviecontainer.classList.add('noBackground');
     }
 });
